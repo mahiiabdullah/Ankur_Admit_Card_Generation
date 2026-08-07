@@ -1,0 +1,38 @@
+# Generated output directories
+Generated_Admit_Cards_Corrected/
+Generated_Admit_Cards_Fixed/
+Generated_Admit_Cards_New_Batch/
+Generated_Admit_Cards_Specific_10/
+Generated_Admit_Cards/
+New Admits/
+
+# Generated archives
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Sensitive / local data
+*.tmp

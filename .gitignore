@@ -1,13 +1,13 @@
 # Generated output directories
-Generated_Admit_Cards_Corrected/
-Generated_Admit_Cards_Fixed/
-Generated_Admit_Cards_New_Batch/
-Generated_Admit_Cards_Specific_10/
-Generated_Admit_Cards/
-New Admits/
+# Generated_Admit_Cards_Corrected/
+# Generated_Admit_Cards_Fixed/
+# Generated_Admit_Cards_New_Batch/
+# Generated_Admit_Cards_Specific_10/
+# Generated_Admit_Cards/
+# New Admits/
 
 # Generated archives
-*.zip
+# *.zip
 
 # Python
 __pycache__/

@@ -1,5 +1,7 @@
 # Python package dependencies for admit card generator
 pandas>=2.0.0
-python-docx>=1.0.0
 openpyxl>=3.0.0
-docx2pdf>=0.1.8
+pywin32>=306          # PDF conversion through Word / WPS (2026 generator)
+pymupdf>=1.23         # optional: checking generated PDFs
+python-docx>=1.0.0    # 2025 scripts
+docx2pdf>=0.1.8       # 2025 scripts

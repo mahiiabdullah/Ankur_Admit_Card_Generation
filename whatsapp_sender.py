@@ -40,6 +40,7 @@ WARNINGS = {
     "3648": "Mobile taken from Nagad number - differs from the one entered. Confirm first.",
     "3506": "Same student as order 3750 (two rolls). Decide which card to send.",
     "3750": "Same student as order 3506 (two rolls). Decide which card to send.",
+    "3843": "Likely same student as order 3561 (roll 41126040, already sent to another number). Confirm first.",
 }
 
 
@@ -69,12 +70,18 @@ def build_message(item, template):
     return template.format(students="\n".join(lines), centre=centre).strip()
 
 
-def read_log():
-    status = {}
+def read_log(queue=None):
+    status, sent_rolls = {}, set()
     if os.path.isfile(LOG):
         with open(LOG, encoding="utf-8-sig") as f:
             for row in csv.DictReader(f):
                 status[row["Mobile"]] = row["Status"]  # latest entry wins
+                if row["Status"] == "sent":
+                    sent_rolls.update(row["Rolls"].split(" | "))
+    # A number already messaged gets a new card later (e.g. a sibling registers) -> send again
+    for item in queue or []:
+        if status.get(item["mobile"]) == "sent" and any(s["Exam Roll"] not in sent_rolls for s in item["students"]):
+            status[item["mobile"]] = "new card added"
     return status
 
 
@@ -100,7 +107,7 @@ class App:
         self.root = root
         self.queue = load_queue()
         self.template = open(MESSAGE, encoding="utf-8").read()
-        self.status = read_log()
+        self.status = read_log(self.queue)
         self.session_sent = 0
         self.i = self._first_pending()
 

@@ -155,10 +155,12 @@ For thousands of messages use bulk SMS with download links or the official Whats
 
 ## 7. Status (21 Oct 2026)
 
-- 270 registrations → **269 cards** (1 kept separate: order 3625).
+- 285 registrations (270 + 15 added on 21/10 from `orders-2026-10-20-22-46-13.xlsx`) → **284 cards** (1 kept separate: order 3625).
 - Exam: **23 October 2026, 10:00 AM**.
-- WhatsApp: 101 of 241 numbers sent, 3 skipped — see `whatsapp_send_log.csv` for the live count.
-- To confirm before sending: order 3648 (mobile taken from Nagad), orders 3506 / 3750 (same student, two rolls).
+- WhatsApp: 238 of 255 numbers sent; left = 3 skipped + the 14 numbers of the new students — see `whatsapp_send_log.csv` for the live count.
+- To confirm before sending: order 3648 (mobile taken from Nagad), orders 3506 / 3750 (same student, two rolls),
+  order 3843 (likely same student as 3561, who already got roll 41126040).
+- If a new card is added for a number that was already messaged, the sender shows it again as “new card added”.
 
 ---
 

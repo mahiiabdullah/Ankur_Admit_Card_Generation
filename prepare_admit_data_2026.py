@@ -29,6 +29,13 @@ SEPARATE_ORDERS = {
     3625: "Kept separate on request (class not given - email entered instead)",
 }
 
+# Likely re-registrations the automatic check misses (different mobile).
+# new order -> earlier order. Only the new order is marked '_Duplicate'
+# (the earlier card was already sent, so its name stays the same).
+MANUAL_DUPLICATES = {
+    3843: 3561,  # Safwan Zaman Ahnaf - same name, father, class, centre; other mobile
+}
+
 # Classes confirmed by the user for rows where the entered class was unusable
 CLASS_OVERRIDES = {
     3748: 6,  # Tamiha Sarkar - email entered as class
@@ -165,6 +172,12 @@ def main(src: str, out: str) -> None:
             df.at[i, "_remarks"].append(f"Duplicate of order {others}")
             flag(df.at[i, "Order ID"], "Student", df.at[i, "Name (English)"],
                  f"same student as order {others} - kept both, marked in file name")
+
+    for new_id, old_id in MANUAL_DUPLICATES.items():
+        for i in df.index[df["Order ID"] == new_id]:
+            df.at[i, "_remarks"].append(f"Duplicate of order {old_id} (same name & father, different mobile)")
+            flag(new_id, "Student", df.at[i, "Name (English)"],
+                 f"likely same student as order {old_id} - kept, marked in file name")
 
     # Keep rolls already issued by assign_rolls_2026.py - they must never change
     if os.path.isfile(out):

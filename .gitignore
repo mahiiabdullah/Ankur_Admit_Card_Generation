@@ -38,3 +38,6 @@ desktop.ini
 *.tmp
 # Office / WPS lock files
 ~$*
+
+# Office / WPS lock files
+~$*

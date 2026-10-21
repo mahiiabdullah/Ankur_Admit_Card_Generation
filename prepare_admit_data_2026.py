@@ -44,6 +44,7 @@ NAME_OVERRIDES = {
 # School names corrected by the user
 SCHOOL_OVERRIDES = {
     3507: "Uttar Kattali Alhaz Mostofa Hakim High School",  # registered as "Mohiuddin Rasel" (father's name); roll 53126056
+    3846: "Chattogram Collegiate School",  # registered as "মোঃ আরিফুল ইসলাম" (father's name); roll 71126059
 }
 
 # Classes confirmed by the user for rows where the entered class was unusable

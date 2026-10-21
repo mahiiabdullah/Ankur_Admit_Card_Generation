@@ -41,6 +41,11 @@ NAME_OVERRIDES = {
     3578: "Sarah Nur Shawli",  # registered as "Hossain Mohiuddin" (father's name); roll 51226058
 }
 
+# School names corrected by the user
+SCHOOL_OVERRIDES = {
+    3507: "Uttar Kattali Alhaz Mostofa Hakim High School",  # registered as "Mohiuddin Rasel" (father's name); roll 53126056
+}
+
 # Classes confirmed by the user for rows where the entered class was unusable
 CLASS_OVERRIDES = {
     3748: 6,  # Tamiha Sarkar - email entered as class
@@ -106,6 +111,8 @@ def main(src: str, out: str) -> None:
 
         if int(oid) in NAME_OVERRIDES:
             flag(oid, "Name (English)", r["Name (English)"], f"name corrected to {NAME_OVERRIDES[int(oid)]} (by user)")
+        if int(oid) in SCHOOL_OVERRIDES:
+            flag(oid, "Name of School", r["Name of School"], f"school corrected to {SCHOOL_OVERRIDES[int(oid)]} (by user)")
 
         cls = normalize_class(r["Class"])
         if int(oid) in CLASS_OVERRIDES:
@@ -157,7 +164,7 @@ def main(src: str, out: str) -> None:
             "Gender": clean_text(r["Gender"]),
             "Name (English)": NAME_OVERRIDES.get(int(oid), clean_text(r["Name (English)"])),
             "Fathers Name": clean_text(r["Fathers Name"]),
-            "Name of School": clean_text(r["Name of School"]),
+            "Name of School": SCHOOL_OVERRIDES.get(int(oid), clean_text(r["Name of School"])),
             "Class": cls if cls is not None else "",
             "Mobile (Online)": mobile,
             "Area": area.capitalize(),

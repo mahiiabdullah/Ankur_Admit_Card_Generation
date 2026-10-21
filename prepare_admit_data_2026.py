@@ -36,6 +36,14 @@ MANUAL_DUPLICATES = {
     3843: 3561,  # Safwan Zaman Ahnaf - same name, father, class, centre; other mobile
 }
 
+# Exam centre chosen by the user instead of the area default (used until a roll is set;
+# after that the centre is kept from the spreadsheet). Halishahar students of the
+# 21/10 batch go to Collegiate.
+CENTRE_OVERRIDES = {
+    oid: "চট্টগ্রাম কলেজিয়েট স্কুল"
+    for oid in (3695, 3786, 3834, 3862, 3863, 3866, 3867, 3873)
+}
+
 # Student names corrected by the user (registration had the wrong name)
 NAME_OVERRIDES = {
     3578: "Sarah Nur Shawli",  # registered as "Hossain Mohiuddin" (father's name); roll 51226058
@@ -156,7 +164,7 @@ def main(src: str, out: str) -> None:
                 remarks.append("Check mobile")
 
         area = clean_text(r["Exam Centre Last Added"]).lower()
-        centre = CENTRE_MAP.get(area, "")
+        centre = CENTRE_OVERRIDES.get(int(oid), CENTRE_MAP.get(area, ""))
         if not centre:
             flag(oid, "Exam Centre Last Added", r["Exam Centre Last Added"], "unknown area")
             remarks.append("Centre missing")

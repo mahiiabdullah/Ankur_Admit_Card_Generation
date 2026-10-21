@@ -40,7 +40,7 @@ WARNINGS = {
     "3648": "Mobile taken from Nagad number - differs from the one entered. Confirm first.",
     "3506": "Same student as order 3750 (two rolls). Decide which card to send.",
     "3750": "Same student as order 3506 (two rolls). Decide which card to send.",
-    "3843": "Likely same student as order 3561 (roll 41126040, already sent to another number). Confirm first.",
+    "3843": "Same student as order 3561 - same roll 41126040, card already sent to 01829695355. Send only if the family wants it on this number too.",
 }
 
 

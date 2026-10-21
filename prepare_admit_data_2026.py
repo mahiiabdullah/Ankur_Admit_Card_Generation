@@ -179,12 +179,17 @@ def main(src: str, out: str) -> None:
             flag(new_id, "Student", df.at[i, "Name (English)"],
                  f"likely same student as order {old_id} - kept, marked in file name")
 
-    # Keep rolls already issued by assign_rolls_2026.py - they must never change
+    # Keep rolls already issued (by assign_rolls_2026.py or edited by hand) - they must never change.
+    # The roll's 2nd digit fixes the centre, so a student with a roll also keeps their Exam Centre
+    # (hand edits moved some Halishahar/Agrabad students to Collegiate).
     if os.path.isfile(out):
         prev = pd.read_excel(out, sheet_name="Admit_Data", dtype=str)
         prev = prev.dropna(subset=["Exam Roll"])
         issued = dict(zip(prev["Order ID"].astype(int), prev["Exam Roll"]))
+        centre = dict(zip(prev["Order ID"].astype(int), prev["Exam Centre"]))
         df["Exam Roll"] = df["Order ID"].map(issued).fillna("")
+        has_roll = df["Exam Roll"] != ""
+        df.loc[has_roll, "Exam Centre"] = df.loc[has_roll, "Order ID"].map(centre)
 
     df["File Name"] = df.apply(
         lambda r: f"Admit_{r['Exam Roll'] or r['Order ID']}"

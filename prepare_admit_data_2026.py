@@ -39,6 +39,12 @@ MANUAL_DUPLICATES = {
 # Student names corrected by the user (registration had the wrong name)
 NAME_OVERRIDES = {
     3578: "Sarah Nur Shawli",  # registered as "Hossain Mohiuddin" (father's name); roll 51226058
+    3795: "Miskatul Jannat Labiba",  # registered as "M. Jahirul Islam" (father's name); roll 41226063
+}
+
+# Father names corrected by the user
+FATHER_OVERRIDES = {
+    3841: "Md Abdul mannan vhyain",  # registered as "Md Absul mannan vhyain"; roll 71226067
 }
 
 # School names corrected by the user
@@ -112,6 +118,8 @@ def main(src: str, out: str) -> None:
 
         if int(oid) in NAME_OVERRIDES:
             flag(oid, "Name (English)", r["Name (English)"], f"name corrected to {NAME_OVERRIDES[int(oid)]} (by user)")
+        if int(oid) in FATHER_OVERRIDES:
+            flag(oid, "Fathers Name", r["Fathers Name"], f"father's name corrected to {FATHER_OVERRIDES[int(oid)]} (by user)")
         if int(oid) in SCHOOL_OVERRIDES:
             flag(oid, "Name of School", r["Name of School"], f"school corrected to {SCHOOL_OVERRIDES[int(oid)]} (by user)")
 
@@ -164,7 +172,7 @@ def main(src: str, out: str) -> None:
             "Exam Roll": "",
             "Gender": clean_text(r["Gender"]),
             "Name (English)": NAME_OVERRIDES.get(int(oid), clean_text(r["Name (English)"])),
-            "Fathers Name": clean_text(r["Fathers Name"]),
+            "Fathers Name": FATHER_OVERRIDES.get(int(oid), clean_text(r["Fathers Name"])),
             "Name of School": SCHOOL_OVERRIDES.get(int(oid), clean_text(r["Name of School"])),
             "Class": cls if cls is not None else "",
             "Mobile (Online)": mobile,

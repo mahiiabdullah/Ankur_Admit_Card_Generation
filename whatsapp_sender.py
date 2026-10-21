@@ -30,8 +30,8 @@ LOG = os.path.join(HERE, "whatsapp_send_log.csv")
 # WhatsApp number currently logged in to WhatsApp Desktop (recorded in the log).
 # History: +8801723088207 (Ankur ccs South) restricted 24h on 18/10/2026 after 52 sends; +8801856851751 used
 # in between (50 sends); back on +8801723088207 from 21/10/2026; positions 201-241 sent from another
-# laptop; this laptop on +8801575808883 from 21/10/2026.
-SENDER = "+8801575808883"
+# laptop; this laptop on +8801575808883 from 21/10/2026, then +8801996259421.
+SENDER = "+8801996259421"
 BREAK_EVERY = 15  # suggest a break after this many sends in one session
 MIN_GAP = 0       # seconds to wait before the next chat can be opened (0 = no wait)
 

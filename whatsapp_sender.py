@@ -41,7 +41,7 @@ WARNINGS = {
     "3506": "Same student as order 3750 (two rolls). Decide which card to send.",
     "3750": "Same student as order 3506 (two rolls). Decide which card to send.",
     "3507": "CORRECTED card - school fixed to Uttar Kattali Alhaz Mostofa Hakim High School. Tell the parent to use this one.",
-    "3667": "CORRECTED card - school fixed to Railway public High School. Student AND father name still show 'Nazmin Akter' (form error) - ask the family for the real names before sending.",
+    "3667": "CORRECTED card - student Md.Naquibuddin, father Md.Jashim Uddin, school Railway Public High School (first card said 'Nazmin Akter'). Tell the parent to use this one.",
     "3795":"CORRECTED card - student name fixed to Miskatul Jannat Labiba. Tell the parent to use this one.",
     "3841": "CORRECTED card - father's name fixed to Md Abdul mannan vhyain. Tell the parent to use this one.",
     "3846":"CORRECTED card - school fixed to Chattogram Collegiate School. Tell the parent to use this one.",

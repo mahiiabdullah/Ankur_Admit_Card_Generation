@@ -40,18 +40,20 @@ MANUAL_DUPLICATES = {
 NAME_OVERRIDES = {
     3578: "Sarah Nur Shawli",  # registered as "Hossain Mohiuddin" (father's name); roll 51226058
     3795: "Miskatul Jannat Labiba",  # registered as "M. Jahirul Islam" (father's name); roll 41226063
+    3667: "Md.Naquibuddin",  # every name field was "Nazmin Akter"; roll 11126020
 }
 
 # Father names corrected by the user
 FATHER_OVERRIDES = {
     3841: "Md Abdul mannan vhyain",  # registered as "Md Absul mannan vhyain"; roll 71226067
+    3667: "Md.Jashim Uddin",  # every name field was "Nazmin Akter"; roll 11126020
 }
 
 # School names corrected by the user
 SCHOOL_OVERRIDES = {
     3507: "Uttar Kattali Alhaz Mostofa Hakim High School",  # registered as "Mohiuddin Rasel" (father's name); roll 53126056
     3846: "Chattogram Collegiate School",  # registered as "মোঃ আরিফুল ইসলাম" (father's name); roll 71126059
-    3667: "Railway public High School",  # registered as "Nazmin Akter" (every name field had this); roll 11126020
+    3667: "Railway Public High School",  # registered as "Nazmin Akter" (every name field had this); roll 11126020
 }
 
 # Classes confirmed by the user for rows where the entered class was unusable

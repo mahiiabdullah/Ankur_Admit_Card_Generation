@@ -112,11 +112,12 @@ Before starting on the other laptop: `git pull`.
 
 | Class | 4–9 → same digit, **10 → 1** |
 |---|---|
-| Centre | 1 = চট্টগ্রাম কলেজিয়েট স্কুল (Dewanhat) · 2 = পতেঙ্গা উচ্চ বিদ্যালয় (Patenga) · 3 = সিলভার বেলস কিন্ডারগার্টেন এন্ড গার্লস হাই স্কুল (Halishahar & Agrabad) |
+| Centre | 1 = চট্টগ্রাম কলেজিয়েট স্কুল (Dewanhat) · 2 = পতেঙ্গা উচ্চ বিদ্যালয় (Patenga) · 3 = সিলভার বেলস কিন্ডারগার্টেন এন্ড গার্লস হাই স্কুল (Halishahar & Agrabad) · 4 = নতুন মনছুরাবাদ আলহাজ্ব মোস্তফা হাকিম হাই স্কুল (added 22/10) |
 | Gender | 1 = Boy · 2 = Girl |
 
 Each Class + Centre + Gender group counts separately. Full rules and the latest
 number used per group: **`ROLL_NUMBER_RULES.md`** (never reuse or skip a roll).
+`—` in that table means no roll is known for the group yet; the roll script then stops and asks.
 
 ---
 

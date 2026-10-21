@@ -38,9 +38,10 @@ MANUAL_DUPLICATES = {
 
 # Exam centre chosen by the user instead of the area default (used until a roll is set;
 # after that the centre is kept from the spreadsheet). Halishahar students of the
-# 21/10 batch go to Collegiate.
+# 21/10 batch go to the new centre 4 (added 22/10).
+CENTRE_4 = "নতুন মনছুরাবাদ আলহাজ্ব মোস্তফা হাকিম হাই স্কুল"
 CENTRE_OVERRIDES = {
-    oid: "চট্টগ্রাম কলেজিয়েট স্কুল"
+    oid: CENTRE_4
     for oid in (3695, 3786, 3834, 3862, 3863, 3866, 3867, 3873)
 }
 

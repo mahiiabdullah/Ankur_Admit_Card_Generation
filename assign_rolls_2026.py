@@ -22,24 +22,29 @@ CENTRE_CODE = {
     "চট্টগ্রাম কলেজিয়েট স্কুল": "1",
     "পতেঙ্গা উচ্চ বিদ্যালয়": "2",
     "সিলভার বেলস কিন্ডারগার্টেন এন্ড গার্লস হাই স্কুল": "3",
+    "নতুন মনছুরাবাদ আলহাজ্ব মোস্তফা হাকিম হাই স্কুল": "4",
 }
+CENTRES = "1234"
 GENDER_CODE = {"boy": "1", "girl": "2"}
 YEAR = "26"
+UNKNOWN = "—"  # no roll known yet for a group (its starting number must come from the user)
 
-TABLE_ROW_RE = re.compile(r"^\|\s*(\d+)\s*\|\s*(Boy|Girl)\s*\|\s*(\d{8})\s*\|\s*(\d{8})\s*\|\s*(\d{8})\s*\|\s*$")
+_CELL = rf"\s*(\d{{8}}|{UNKNOWN})\s*\|"
+TABLE_ROW_RE = re.compile(r"^\|\s*(\d+)\s*\|\s*(Boy|Girl)\s*\|" + _CELL * len(CENTRES) + r"\s*$")
 
 
 def read_latest(rules_text: str) -> dict:
-    """Return {(class, centre_code, gender_code): latest_roll} from section 4."""
+    """Return {(class, centre_code, gender_code): latest_roll or None} from section 4."""
     latest = {}
     for line in rules_text.splitlines():
         m = TABLE_ROW_RE.match(line)
         if m:
             cls, gender = int(m.group(1)), GENDER_CODE[m.group(2).lower()]
-            for centre, roll in zip("123", m.groups()[2:]):
-                latest[(cls, centre, gender)] = roll
-    if len(latest) != 42:
-        sys.exit(f"Expected 42 counters in section 4 of the rules file, found {len(latest)}")
+            for centre, roll in zip(CENTRES, m.groups()[2:]):
+                latest[(cls, centre, gender)] = None if roll == UNKNOWN else roll
+    expected = len(CLASS_CODE) * len(CENTRES) * 2
+    if len(latest) != expected:
+        sys.exit(f"Expected {expected} counters in section 4 of the rules file, found {len(latest)}")
     return latest
 
 
@@ -50,7 +55,7 @@ def write_latest(rules_text: str, latest: dict) -> str:
         if m:
             cls, gender_word = int(m.group(1)), m.group(2)
             g = GENDER_CODE[gender_word.lower()]
-            rolls = " | ".join(latest[(cls, c, g)] for c in "123")
+            rolls = " | ".join(latest[(cls, c, g)] or f"{UNKNOWN:<8}" for c in CENTRES)
             line = f"| {cls:<2} | {gender_word:<4} | {rolls} |"
         elif line.startswith("Last updated:"):
             line = f"Last updated: {date.today():%d/%m/%Y}"
@@ -95,6 +100,9 @@ def main(xlsx: str, rules: str, dry_run: bool) -> None:
     assigned = []
     for oid, cls, centre, gender, r in sorted(todo, key=lambda t: t[0]):
         key = (cls, centre, gender)
+        if latest[key] is None:
+            sys.exit(f"No starting roll known for class {cls}, centre {centre}, gender {gender} "
+                     f"(order {oid}) - ask the user and fill section 4 of the rules file.")
         serial = int(latest[key][-3:]) + 1
         if serial > 999:
             sys.exit(f"Serial would pass 999 for class {cls}, centre {centre}, gender {gender} - stopping.")

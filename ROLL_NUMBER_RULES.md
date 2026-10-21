@@ -42,6 +42,7 @@ Example: `41126038` = Class 4, Center 1, Boy, year 26, serial 038.
 | চট্টগ্রাম কলেজিয়েট স্কুল (Chattogram Collegiate School) | 1 |
 | পতেঙ্গা উচ্চ বিদ্যালয় (Patenga High School) | 2 |
 | সিলভার বেলস কিন্ডারগার্টেন এন্ড গার্লস হাই স্কুল (Silver Bells Kindergarten & Girls High School; also covers Halishahar & Agrabad) | 3 |
+| নতুন মনছুরাবাদ আলহাজ্ব মোস্তফা হাকিম হাই স্কুল (Notun Monsurabad Alhaj Mostofa Hakim High School; added 22/10/2026) | 4 |
 
 ### Gender code (1 digit)
 | Gender | Code |
@@ -54,7 +55,7 @@ Example: `41126038` = Class 4, Center 1, Boy, year 26, serial 038.
 ## 3. Serial rule (most important)
 
 - The serial counts up **separately for each (Class + Center + Gender) group**.
-- There are 7 classes × 3 centers × 2 genders = **42 independent counters**.
+- There are 7 classes × 4 centers × 2 genders = **56 independent counters**.
 - A new roll = the group's **latest serial + 1**, zero-padded to 3 digits.
 - Never reuse a serial. Never skip a serial unless the user asks.
 - If several students are added to the same group, give them consecutive serials.
@@ -63,28 +64,29 @@ Example: `41126038` = Class 4, Center 1, Boy, year 26, serial 038.
 
 ## 4. Latest issued rolls (source of truth)
 
-Last updated: 21/10/2026
+Last updated: 22/10/2026
 
-| Class | Gender | Center 1 (Collegiate) | Center 2 (Patenga) | Center 3 (Silver Bells) |
-|---|---|---|---|---|
-| 4  | Boy  | 41126054 | 42126051 | 43126087 |
-| 4  | Girl | 41226064 | 42226060 | 43226083 |
-| 5  | Boy  | 51126068 | 52126054 | 53126069 |
-| 5  | Girl | 51226084 | 52226072 | 53226123 |
-| 6  | Boy  | 61126053 | 62126074 | 63126060 |
-| 6  | Girl | 61226066 | 62226064 | 63226077 |
-| 7  | Boy  | 71126061 | 72126066 | 73126050 |
-| 7  | Girl | 71226070 | 72226069 | 73226063 |
-| 8  | Boy  | 81126057 | 82126037 | 83126042 |
-| 8  | Girl | 81226032 | 82226047 | 83226054 |
-| 9  | Boy  | 91126020 | 92126033 | 93126020 |
-| 9  | Girl | 91226018 | 92226055 | 93226043 |
-| 10 | Boy  | 11126022 | 12126005 | 13126010 |
-| 10 | Girl | 11226013 | 12226013 | 13226014 |
+| Class | Gender | Center 1 (Collegiate) | Center 2 (Patenga) | Center 3 (Silver Bells) | Center 4 (Monsurabad) |
+|---|---|---|---|---|---|
+| 4  | Boy  | 41126054 | 42126051 | 43126087 | —        |
+| 4  | Girl | 41226076 | 42226060 | 43226083 | —        |
+| 5  | Boy  | 51126068 | 52126054 | 53126069 | 54126034 |
+| 5  | Girl | 51226086 | 52226072 | 53226123 | 54226024 |
+| 6  | Boy  | 61126053 | 62126078 | 63126060 | 64126023 |
+| 6  | Girl | 61226066 | 62226064 | 63226077 | 64226023 |
+| 7  | Boy  | 71126064 | 72126066 | 73126050 | —        |
+| 7  | Girl | 71226070 | 72226069 | 73226063 | —        |
+| 8  | Boy  | 81126057 | 82126037 | 83126042 | —        |
+| 8  | Girl | 81226036 | 82226047 | 83226054 | —        |
+| 9  | Boy  | 91126020 | 92126033 | 93126020 | —        |
+| 9  | Girl | 91226018 | 92226055 | 93226043 | 94226008 |
+| 10 | Boy  | 11126022 | 12126005 | 13126010 | —        |
+| 10 | Girl | 11226013 | 12226013 | 13226014 | —        |
 
 **After generating any new roll, update the matching cell above** with the new
 latest roll and change the "Last updated" date (DD/MM/YYYY), so the next run
 continues from the right number.
+`—` = no roll known yet for that group: ask the user for the starting number.
 
 ---
 

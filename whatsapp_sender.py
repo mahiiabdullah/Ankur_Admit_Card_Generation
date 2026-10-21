@@ -40,7 +40,8 @@ WARNINGS = {
     "3648": "Mobile taken from Nagad number - differs from the one entered. Confirm first.",
     "3506": "Same student as order 3750 (two rolls). Decide which card to send.",
     "3750": "Same student as order 3506 (two rolls). Decide which card to send.",
-    "3843": "Same student as order 3561 - same roll 41126040, card already sent to 01829695355. Send only if the family wants it on this number too.",
+    "3578": "CORRECTED card - name fixed to Sarah Nur Shawli (first card had 'Hossain Mohiuddin'). Tell the parent to use this one.",
+    "3843":"Same student as order 3561 - same roll 41126040, card already sent to 01829695355. Send only if the family wants it on this number too.",
 }
 
 

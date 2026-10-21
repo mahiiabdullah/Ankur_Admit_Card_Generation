@@ -36,6 +36,11 @@ MANUAL_DUPLICATES = {
     3843: 3561,  # Safwan Zaman Ahnaf - same name, father, class, centre; other mobile
 }
 
+# Student names corrected by the user (registration had the wrong name)
+NAME_OVERRIDES = {
+    3578: "Sarah Nur Shawli",  # registered as "Hossain Mohiuddin" (father's name); roll 51226058
+}
+
 # Classes confirmed by the user for rows where the entered class was unusable
 CLASS_OVERRIDES = {
     3748: 6,  # Tamiha Sarkar - email entered as class
@@ -99,6 +104,9 @@ def main(src: str, out: str) -> None:
         oid = clean_text(r["Order ID"])
         remarks = []
 
+        if int(oid) in NAME_OVERRIDES:
+            flag(oid, "Name (English)", r["Name (English)"], f"name corrected to {NAME_OVERRIDES[int(oid)]} (by user)")
+
         cls = normalize_class(r["Class"])
         if int(oid) in CLASS_OVERRIDES:
             cls = CLASS_OVERRIDES[int(oid)]
@@ -147,7 +155,7 @@ def main(src: str, out: str) -> None:
             "Order ID": int(oid),
             "Exam Roll": "",
             "Gender": clean_text(r["Gender"]),
-            "Name (English)": clean_text(r["Name (English)"]),
+            "Name (English)": NAME_OVERRIDES.get(int(oid), clean_text(r["Name (English)"])),
             "Fathers Name": clean_text(r["Fathers Name"]),
             "Name of School": clean_text(r["Name of School"]),
             "Class": cls if cls is not None else "",

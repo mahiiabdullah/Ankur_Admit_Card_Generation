@@ -161,6 +161,9 @@ For thousands of messages use bulk SMS with download links or the official Whats
 - To confirm before sending: order 3648 (mobile taken from Nagad), orders 3506 / 3750 (same student, two rolls),
   order 3843 (likely same student as 3561, who already got roll 41126040).
 - If a new card is added for a number that was already messaged, the sender shows it again as “new card added”.
+- **Handled outside this project (do NOT add again):** orders 3695, 3786, 3834, 3862–3869, 3871–3873
+  (completed orders in `orders-2026-10-21-17-40-53.xlsx`). Rolls, cards and sending were done by hand on 21–22/10.
+  Orders 3565, 3751, 3798 were “On hold” in that export.
 
 ---
 
